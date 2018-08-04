@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{d3b10a63-5a5b-4940-8855-aad55867a5c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\External">
+      <UniqueIdentifier>{ea9cd5ec-73f9-494c-8e19-ecd725e33c5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\External\glm">
+      <UniqueIdentifier>{acd8ae1e-13a1-4951-9acc-2d2b281861c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\External\IMGUI">
+      <UniqueIdentifier>{459744bc-61da-4353-ba7c-e56045164003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\External\LZ4">
+      <UniqueIdentifier>{ea95e480-1072-43d0-baeb-d7c223bf7553}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform">
+      <UniqueIdentifier>{51e1f13e-d0a6-42bc-a233-4f18d2353f56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform\Win">
+      <UniqueIdentifier>{b00159a2-3108-4a9b-8c7e-a9d0104b1073}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NoiseGen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Core.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\CoreTypes.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\FileIO.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\common.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\exponential.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\ext.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\fwd.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\geometric.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\glm.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\integer.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\mat2x2.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\mat2x3.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\mat2x4.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\mat3x2.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\mat3x3.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\mat3x4.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\mat4x2.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\mat4x3.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\mat4x4.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\matrix.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\packing.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\trigonometric.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\vec2.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\vec3.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\vec4.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\glm\vector_relational.hpp">
+      <Filter>Source Files\External\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\imgui\imconfig.h">
+      <Filter>Source Files\External\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\imgui\imgui.h">
+      <Filter>Source Files\External\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\imgui\imgui_impl_dx11.h">
+      <Filter>Source Files\External\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\imgui\imgui_internal.h">
+      <Filter>Source Files\External\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\imgui\stb_rect_pack.h">
+      <Filter>Source Files\External\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\imgui\stb_textedit.h">
+      <Filter>Source Files\External\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\imgui\stb_truetype.h">
+      <Filter>Source Files\External\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\LZ4\lz4.h">
+      <Filter>Source Files\External\LZ4</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\LZ4\lz4frame.h">
+      <Filter>Source Files\External\LZ4</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\LZ4\lz4frame_static.h">
+      <Filter>Source Files\External\LZ4</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\LZ4\lz4hc.h">
+      <Filter>Source Files\External\LZ4</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\LZ4\xxhash.h">
+      <Filter>Source Files\External\LZ4</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\RHI.h">
+      <Filter>Source Files\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\Win\DX11_RHI.h">
+      <Filter>Source Files\Platform\Win</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\Win\KeyboardCodes.h">
+      <Filter>Source Files\Platform\Win</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Platform\Win\PCInputEnum.h">
+      <Filter>Source Files\Platform\Win</Filter>
+    </ClInclude>
+    <ClInclude Include="WinMain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderMain.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="NoiseGen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Core\Core.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Core\FileIO.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\External\imgui\imgui.cpp">
+      <Filter>Source Files\External\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\External\imgui\imgui_demo.cpp">
+      <Filter>Source Files\External\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\External\imgui\imgui_draw.cpp">
+      <Filter>Source Files\External\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\External\imgui\imgui_impl_dx11.cpp">
+      <Filter>Source Files\External\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\External\LZ4\lz4.c">
+      <Filter>Source Files\External\LZ4</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\External\LZ4\lz4frame.c">
+      <Filter>Source Files\External\LZ4</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\External\LZ4\lz4hc.c">
+      <Filter>Source Files\External\LZ4</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\External\LZ4\xxhash.c">
+      <Filter>Source Files\External\LZ4</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Platform\RHI.cpp">
+      <Filter>Source Files\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Platform\Win\DX11_RHI.cpp">
+      <Filter>Source Files\Platform\Win</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Platform\Win\PCInputEnum.cpp">
+      <Filter>Source Files\Platform\Win</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NoiseGen.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="NoiseGen.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Src\External\LZ4\liblz4.pc.in">
+      <Filter>Source Files\External\LZ4</Filter>
+    </None>
+    <None Include="Src\External\LZ4\LICENSE">
+      <Filter>Source Files\External\LZ4</Filter>
+    </None>
+    <None Include="Src\External\LZ4\Makefile">
+      <Filter>Source Files\External\LZ4</Filter>
+    </None>
+    <None Include="Src\External\LZ4\README.md">
+      <Filter>Source Files\External\LZ4</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\Rundata\main.fx">
+      <Filter>Source Files</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
