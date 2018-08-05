@@ -222,14 +222,35 @@ float4 PS_Normalize( PS_INPUT_POSUV input) : SV_Target
 
 float4 PS_FinalOutput( PS_INPUT_POSUV input) : SV_Target
 {
-	float2 UV =input.UV;
-	UV *= float2(1600/256,900/256)/2;
+	float2 inUV = input.UV;
+	float2 UV   = inUV;
+	UV  = floor(float2(UV.x * 1600, UV.y * 900));
+	UV /= 256;
 	float ooSZ = 1.0f / UVSZ;
+	float BitQuant = 32.0f;
 
-	float4 Col = txTex.Sample( samLinear, UV ).r;
+	// Top Third is a zoomed in version of the final noise texture repeating
+	float4 Col	= txTex.Sample( samPoint, UV ).r;
+
+	if((inUV.y > 0.25 ) && (inUV.y < 0.5 ))
+	{
+		Col = inUV.x;
+	}
 
 
 
+
+	// Finally a ramp dithered using the noise
+	if((inUV.y > 0.5 ) && (inUV.y < 0.75 ))
+	{
+		Col =  floor((inUV.x * BitQuant) + ((Col.r-0.5)*2) ) / BitQuant;
+	}
+
+	// Next third is a low bit ramp
+	if((inUV.y > 0.75 ) && (inUV.y < 1 ))
+	{
+		Col = floor((inUV.x * BitQuant) ) / BitQuant;
+	}
 
 // Histogram
 	{
@@ -258,7 +279,7 @@ float4 PS_FinalOutput( PS_INPUT_POSUV input) : SV_Target
 		}
 	}
 
-//	Col = sqrt(Col);
+	//Col = sqrt(Col);
 	Col = Col * Col;
 
 	return Col;
