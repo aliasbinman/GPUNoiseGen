@@ -47,8 +47,6 @@ extern IDXGISwapChain*              g_pSwapChain;
 
 ID3D11RenderTargetView*             g_pBackBufferRTV;
 
-
-
 ID3D11InputLayout*                  g_pVertexLayout_PosUV = NULL;
 
 DEPTHSTENCIL	                    g_DepthStencil;
@@ -61,16 +59,16 @@ CONSTANTBUFFER                      g_pCBView ;
 DEPTHSTENCILSTATE					g_DepthStencilState_Main;
 DEPTHSTENCILSTATE					g_DepthStencilState_Always;
 
-
 VERTEXBUFFER						g_QuadVB;
 INDEXBUFFER							g_QuadIB;
 	
 // Noise Generation
 const int NoiseSZ = 256;
-//TEXTURE2D							g_NoiseTex;
 RENDERTARGET						g_Blur1Tex;
 RENDERTARGET						g_Blur2Tex;
 RENDERTARGET						g_NoiseRT;
+RENDERTARGET						g_FinalNoiseRT;
+RENDERTARGET						g_FinalNoiseForSaveRT;
 
 PIXELSHADER							g_pNoiseGenPS;
 PIXELSHADER							g_Blur1PS;
@@ -109,10 +107,14 @@ bool CreateResources()
 
 	// Texture for the noise  and the 2 blur targets
 	TEXTURE_DESC desc(NoiseSZ, NoiseSZ, NoiseFMT);
-	g_NoiseRT  =  RHI_CreateRenderTarget(g_Device,  desc);
-	g_Blur1Tex =  RHI_CreateRenderTarget(g_Device,  desc);
-	g_Blur2Tex =  RHI_CreateRenderTarget(g_Device,  desc);
-
+	g_NoiseRT				=  RHI_CreateRenderTarget(g_Device,  desc);
+	g_Blur1Tex				=  RHI_CreateRenderTarget(g_Device,  desc);
+	g_Blur2Tex				=  RHI_CreateRenderTarget(g_Device,  desc);
+	desc.Format				=  TEXFMT_R8G8B8A8_SRGB;
+	g_FinalNoiseRT			=  RHI_CreateRenderTarget(g_Device,  desc);
+	desc.Flags				=  TEXCREATE_CPUREADBACK;
+	g_FinalNoiseForSaveRT	=  RHI_CreateRenderTarget(g_Device,  desc);
+	
 
 	RHI_SamplerDesc samplerDesc;
 
@@ -319,9 +321,16 @@ void GenNoise()
 		g_Device.pD3DContext->CSSetUnorderedAccessViews(0, 1,&g_pHISTOGRAM_UAV,0);
 		g_Device.pD3DContext->Dispatch(1, 1, 1);
 		g_Device.pD3DContext->CSSetUnorderedAccessViews(0, 1, &g_pNullUAV,0);
-
 	}
 
+	// Final Copy so we can save the image to disc
+
+	g_Device.pD3DContext->OMSetRenderTargets(1, &g_FinalNoiseRT.pD3DRTV  , nullptr);
+	RHI_SetPixelShader(g_Device,  g_CopyPS);
+	g_Device.pD3DContext->PSSetShaderResources(0, 1, &g_NoiseRT.pD3DSRV);
+	g_Device.pD3DContext->DrawIndexed(6, 0,0);
+	
+	g_Device.pD3DContext->CopyResource (g_FinalNoiseForSaveRT.pD3DTexture2D,  g_FinalNoiseRT.pD3DTexture2D);
 
 
 	// TO THE SCREEN

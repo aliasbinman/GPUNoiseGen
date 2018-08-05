@@ -8,6 +8,7 @@ TEXTURE_DESC::TEXTURE_DESC(Uint32 W, Uint32 H)
 	MipLevels	= 1;
 	ArraySize	= 1;
 	Format		= TEXFMT_R8G8B8A8;
+	Flags		= TEXCREATE_DEFAULT;
 }
 
 
@@ -18,6 +19,7 @@ TEXTURE_DESC::TEXTURE_DESC(Uint32 W, Uint32 H, eTEXTUREFORMAT FMT)
 	MipLevels	= 1;
 	ArraySize	= 1;
 	Format		= FMT;
+	Flags		= TEXCREATE_DEFAULT;
 };
 
 

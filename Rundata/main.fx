@@ -85,7 +85,7 @@ float4 PS_NoiseGen( PS_INPUT_POSUV input) : SV_Target
 	uint2 n2 = uint2((UV.x*256), (UV.y*256));
 //	float4 Col = hash1(n);
 	//float4 Col = hash( n2 ) ;
-	float4 Col = hash_IQ3( n2 ) ;
+	float4 Col = saturate(hash( n2 )) ;
 	
 	//Col = UV.x;
 	return Col;
@@ -201,7 +201,7 @@ float4 PS_Blur2( PS_INPUT_POSUV input) : SV_Target
 float4 PS_Copy( PS_INPUT_POSUV input) : SV_Target
 {
 	float2 UV =input.UV;
-	float4 Col = txTex.Sample( samPoint, UV );
+	float4 Col = txTex.Sample( samPoint, UV ).r;
 	return Col;
 }
 

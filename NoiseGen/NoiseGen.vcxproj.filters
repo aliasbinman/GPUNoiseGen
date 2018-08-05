@@ -34,6 +34,9 @@
     <Filter Include="Source Files\Platform\Win">
       <UniqueIdentifier>{b00159a2-3108-4a9b-8c7e-a9d0104b1073}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\External\STB">
+      <UniqueIdentifier>{633e46b5-4d27-43c6-ac97-97831cd8609d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -183,6 +186,12 @@
     <ClInclude Include="RenderMain.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\External\STB\stb_image.h">
+      <Filter>Source Files\External\STB</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\External\STB\stb_image_write.h">
+      <Filter>Source Files\External\STB</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NoiseGen.cpp">
@@ -262,6 +271,9 @@
     </None>
     <None Include="Src\External\LZ4\README.md">
       <Filter>Source Files\External\LZ4</Filter>
+    </None>
+    <None Include="ReadMe.md">
+      <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

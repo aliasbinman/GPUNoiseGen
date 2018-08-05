@@ -115,6 +115,8 @@ DEPTHSTENCIL RHI_CreateDepthStencil(DEVICE device, TEXTURE_DESC &desc)
 
 RENDERTARGET RHI_CreateRenderTarget(DEVICE device, TEXTURE_DESC &desc)
 {
+	HRESULT hRes;
+
 	RENDERTARGET tex2D;
 
 	D3D11_TEXTURE2D_DESC descRT;
@@ -126,12 +128,26 @@ RENDERTARGET RHI_CreateRenderTarget(DEVICE device, TEXTURE_DESC &desc)
 	descRT.Format				= ConvertFmt(desc.Format);
 	descRT.SampleDesc.Count		= 1;
 	descRT.SampleDesc.Quality	= 0;
-	descRT.Usage				= D3D11_USAGE_DEFAULT;
-	descRT.BindFlags			= D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE;
-	descRT.CPUAccessFlags		= 0;
+	if (desc.Flags == TEXCREATE_CPUREADBACK)
+	{
+		descRT.Usage				= D3D11_USAGE_STAGING;
+		descRT.BindFlags			= 0;
+		descRT.CPUAccessFlags		= D3D11_CPU_ACCESS_READ;
+	} 
+	else
+	{
+		descRT.Usage				= D3D11_USAGE_DEFAULT;
+		descRT.BindFlags			= D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE;
+		descRT.CPUAccessFlags		= 0;
+	}
+
 	descRT.MiscFlags			 = 0;
-	g_Device.pD3DDevice->CreateTexture2D(&descRT, NULL, &tex2D.pD3DTexture2D);
-	g_Device.pD3DDevice->CreateRenderTargetView(tex2D.pD3DTexture2D, NULL, &tex2D.pD3DRTV);
+	hRes = g_Device.pD3DDevice->CreateTexture2D(&descRT, NULL, &tex2D.pD3DTexture2D);
+	if(hRes != S_OK)
+	{
+		int g=0;
+	}
+	hRes = g_Device.pD3DDevice->CreateRenderTargetView(tex2D.pD3DTexture2D, NULL, &tex2D.pD3DRTV);
 
 	
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
@@ -140,7 +156,7 @@ RENDERTARGET RHI_CreateRenderTarget(DEVICE device, TEXTURE_DESC &desc)
     srvDesc.ViewDimension			= D3D11_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip	= 0;
 	srvDesc.Texture2D.MipLevels		= 1;
-	HRESULT hr =  g_Device.pD3DDevice->CreateShaderResourceView(tex2D.pD3DTexture2D, &srvDesc, &tex2D.pD3DSRV);
+	hRes = g_Device.pD3DDevice->CreateShaderResourceView(tex2D.pD3DTexture2D, &srvDesc, &tex2D.pD3DSRV);
 
 
 	return tex2D;

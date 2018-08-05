@@ -41,13 +41,22 @@ enum eTEXTUREFORMAT
 	TEXFMT_MAX,
 };
 
+enum eTEXTURECREATEFLAGS
+{
+	TEXCREATE_NONE,
+	TEXCREATE_DEFAULT,
+	TEXCREATE_CPUREADBACK,
+};
+
+
 struct TEXTURE_DESC
 {
-	Uint32			Width;
-	Uint32			Height;
-	Uint32			MipLevels;
-	Uint32			ArraySize;
-	eTEXTUREFORMAT	Format;
+	Uint32					Width;
+	Uint32					Height;
+	Uint32					MipLevels;
+	Uint32					ArraySize;
+	eTEXTUREFORMAT			Format;
+	eTEXTURECREATEFLAGS		Flags;
 
 	TEXTURE_DESC(Uint32 W, Uint32 H);
 	TEXTURE_DESC(Uint32 W, Uint32 H, eTEXTUREFORMAT FMT);
