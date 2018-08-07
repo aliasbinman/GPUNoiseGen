@@ -26,8 +26,9 @@ struct CBView
 	glm::mat4x4		mProjection;
 	glm::mat4x4		mViewProjection;
 	float			LerpVal;
-	float			Pad[2];
+	float			Pad[1];
 	Sint32			NoiseOffset;
+	Sint32			BitQuant;
 };
 
 struct CBDraw
@@ -360,6 +361,9 @@ void Render()
 	CBView					cbView;
 	cbView.LerpVal			= gGUI.LerpVal;
 	cbView.NoiseOffset		= gGUI.NoiseOffset;
+	cbView.BitQuant			= gGUI.BitQuant;
+	
+
 	RHI_UpdateConstantBuffer(g_Device,  g_pCBView, (void *) &cbView);
 	RHI_SetConstantBuffer_VS_PS(g_Device, 0, 1, g_pCBView);
 

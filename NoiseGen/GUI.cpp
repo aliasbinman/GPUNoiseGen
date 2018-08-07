@@ -70,13 +70,12 @@ void ShowDetailsView()
 {
 	ImGui::Begin("Details",				&show_Details_Window);
 
-	if (ImGui::CollapsingHeader("Render Options",ImGuiTreeNodeFlags_DefaultOpen))
-	{
-       
-		ImGui::SliderFloat("LERP", &gGUI.LerpVal, -1.0f, 2.0f, "%1.3f", 1.0f);
+   
+	ImGui::SliderFloat("LERP",				&gGUI.LerpVal, -1.0f, 2.0f, "%1.3f", 1.0f);
 
-		ImGui::SliderInt("Iterations", &gGUI.Iterations, 0, 100);
-	}
+	ImGui::SliderInt("Iterations",			&gGUI.Iterations, 0, 100);
+	ImGui::SliderInt("Bit Quantisation",	&gGUI.BitQuant, 1, 8);
+
 	ImGui::End();
 }
 

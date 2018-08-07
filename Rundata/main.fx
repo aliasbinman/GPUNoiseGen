@@ -11,7 +11,6 @@ SamplerState samPoint   : register( s1 );
 
 
 
-
 Texture2D<float4>			ColorBuf ;
 groupshared uint			g_TileHistogram[256];
 RWBuffer<uint>				Histogram;
@@ -25,8 +24,9 @@ cbuffer cbView: register( b0 )
     matrix Projection;
     matrix WorldViewProjection;
 	float  LerpVal;
-	float  Pad1,Pad2;
+	float  Pad1;
 	uint   NoiseOffset;
+	uint   BitQuant;
 };
 
 
@@ -63,8 +63,24 @@ float hash(uint2 c)
 	return float(x*y)*(2.0 / 8589934592.0) + 0.5;
 }
 
+float Quantize(float x, float NumBits)
+{
+	float NumVals = exp2(NumBits)-1;
+	// Round to the nearest
 
+	float Q = floor(x*(NumVals+0.99999));
+	return saturate(Q/NumVals);
+}
 
+float QuantizeWithNoise(float x, float NumBits, float Noise)
+{
+	float NumVals = exp2(NumBits)-1;
+	// Round to the nearest
+
+	float Q = floor( (x*(NumVals+0.9999) ) + ((Noise-0.5)*2));
+	return saturate(Q/NumVals);
+
+}
 
 PS_INPUT_POSUV VS_Main(VS_INPUT_POSUV input)
 {
@@ -227,7 +243,6 @@ float4 PS_FinalOutput( PS_INPUT_POSUV input) : SV_Target
 	UV  = floor(float2(UV.x * 1600, UV.y * 900));
 	UV /= 256;
 	float ooSZ = 1.0f / UVSZ;
-	float BitQuant = 32.0f;
 
 	// Top Third is a zoomed in version of the final noise texture repeating
 	float4 Col	= txTex.Sample( samPoint, UV ).r;
@@ -243,13 +258,13 @@ float4 PS_FinalOutput( PS_INPUT_POSUV input) : SV_Target
 	// Finally a ramp dithered using the noise
 	if((inUV.y > 0.5 ) && (inUV.y < 0.75 ))
 	{
-		Col =  floor((inUV.x * BitQuant) + ((Col.r-0.5)*2) ) / BitQuant;
+		Col = QuantizeWithNoise( inUV.x, BitQuant ,Col.r );
 	}
 
 	// Next third is a low bit ramp
 	if((inUV.y > 0.75 ) && (inUV.y < 1 ))
 	{
-		Col = floor((inUV.x * BitQuant) ) / BitQuant;
+		Col = Quantize( inUV.x, BitQuant);
 	}
 
 // Histogram
